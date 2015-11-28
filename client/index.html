@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app>
+
+<head>
+  <title>App Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+  <style>
+    body {
+      padding-top: 60px;
+    }
+  </style>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function() {
+    $.getJSON('/get/json', function(result) {
+      $.each(result, function(i, field){
+            $("#data").html(field + " ");
+        });
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <div class="container" ng-controller="ChatController">
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="pull-right">
+          <a href="https://c9.io" class="brand">Cloud9 IDE</a>
+        </div>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>App Example</h1>
+    </div>
+    <div class="row">
+      <div class="span3">
+        <ul class="nav nav-list well">
+          <li class="nav-header">Reading JSON:</li>
+          <li ng-repeat="user in roster" ng-bind="user">
+          </li>
+        </ul>
+      </div>
+      <div class="span9">
+        <h1 id="data">Some text</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
